@@ -1,18 +1,13 @@
 import re
 import pprint
-count = 0
-
 
 with open(r'Day7.txt') as file:
     list_ = file.readlines()
     list_ = [y.strip() for y in list_]
     new_line = [re.split(r"contain|\,", line) for line in list_]
 
-
-
-
+#Make dictionary
 diction = {}
-
 #Make dictionary
 for line in new_line:
     bag_key = line[0].strip()
@@ -23,50 +18,43 @@ for line in new_line:
 
     diction[bag_key] = line[1:]
 
+#Dictionary now looks like: {'bright white': ['1 shiny gold'],
+                             #'dark olive': ['3 faded blue', '4 dotted black'], etc.
 
+#Alphabetizes the dictionary
 pprint.pprint(diction)
 
-        #val, color = x.split(' ', 1)
-
-
-
-def search_bag(current_bag):
-    global count
-    global bag
-    global rules
-    print("current root is " + current_bag)
-    rules = diction[current_bag]
-    print("It's children are " , rules)
-    for x in rules:
-        val, color = x.split(' ',1)
-        if color == "shiny gold":
-            count +=1
-            return 'none'
-        # elif color == 'other':
-        #     current_bag = color
-        else:
-            for k in diction.keys():    
-                if color in diction.keys():
-                    next_item = diction[color]
-                    if next_item[0] != 'no other':
-                        current_bag = color
-                        return search_bag(current_bag)
-                    # else:
-                    #     print(color, " contains no other bags")
-number = 0
-for bag in diction.keys():
+good_bags = []
+#List to keep track of bags containing Shiny gold.
+count = 0
+def deep_search(search_bag, dictionary):
     
-        #val, color = x.split(' ',1)
-        #if color == 'other':
-        # continue
-    search_bag(bag)
-    number += 1
+    global count
+    global good_bags
+    
+    for bag, rules in dictionary.items():
+        bag_rules = []
+        
+        for x in rules:
+            val, rule = x.split(' ', 1)
+            bag_rules.append(rule)
+            #Split the number from color, and append color to our Bag_rules list.
+        if search_bag in bag_rules:
+            print('Found one, bag =', bag, ', searching for', search_bag, ', in', bag_rules, count)
+            if bag not in good_bags:
+                good_bags.append(bag)
+                count +=1
+                deep_search(bag, dictionary)
+                #Recursion happens here.
+                #By changing search bag function to the current 'good bag', 
+                #we now search through the beginning of the dictinory again,
+                #looking for the "good bag". Meaning, the function doesn't just
+                #search for "shiny gold", it now knows which bags contain shiny gold,
+                #and searches for those bags.
+                #Once it searches for our new bag throughout the whole dictionary,
+                #it goes bag to searching for shiny gold, from the beginning of the dictionary, and repeats.
+                
+    return count
 
-print(' total', count, number)
 
-
-# 
-#
-#
-#
-#
+print('Bags containing Shiny Gold:', deep_search('shiny gold', diction))
