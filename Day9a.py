@@ -6,14 +6,10 @@ def file():
 #print(file())
 
 
-lists = [35, 20, 15, 25, 47,40,62,55,65,95,102, 117, 150, 182, 127]
-numbers = [1,2,3,4,5,6,7,8,9,10]
-
 def check_numbers(num_range: 'int', data):
     #print(lists)
     while len(data) >= num_range:
             good_list = []
-            boolean = False
             test_list = data[:num_range]
             
             if len(data) >=num_range +1:
@@ -32,25 +28,29 @@ def check_numbers(num_range: 'int', data):
               
             data.pop(0)
             
-def contiguous(bad_number: 'function', data):
+def contiguous(bad_number: 'var', data: 'function'):
     #print(data)
-    
+    index_counter = 0
+    ### This "pops" this next "first" number of the list.
+    ### When I used pop for this puzzle, the iteration index wouldn't reset, therefore it
+        # wasn't starting at the beginning of the list like I would like it to. This was
+        # a good substitue.
     for num in data:
         good_list = []
+        #This will give me, at the end, the list of numbers being added.
         total = num
-        for x in data:
-            if x !=num:
+        index_counter +=1
+        
+        for x in data[index_counter:]:
+            if x != num:
+            #Making sure we don't recount the current iterative
                 total+= x
                 good_list.append(x)
-                #print('list:', good_list)
-                #print(total)
-                #print(bad_number)
                 
                 if total == bad_number:
                     good_list.append(num)
                     #print('bad_number:', bad_number, good_list)
-                    return good_list
-        data.pop(0)
+                    return 'bad number: ' + str(total), 'sum = ' + str(min(good_list) + max(good_list))
                 
 parta = check_numbers(25, file())
 #print(parta)
