@@ -1,5 +1,5 @@
 def data():
-    data = open('Day8.txt', 'r').readlines()
+    data = open(r'C:\Users\sfrie\Python\AdventofCode\Day8.txt').readlines()
     #print(data)
     data2 = [x.strip() for x in data]
     list_data_return = [x.split() for x in data2]
@@ -46,4 +46,5 @@ def check(data_list):
         check_doubles_list.append(line_num -1)
         return check(data_list)
         #When it recursses, it returns the function again with the new line_num.
-                  
+
+print(check(data()))

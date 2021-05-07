@@ -1,6 +1,6 @@
 import re
 import collections
-with open(r'Day4.txt') as file:    
+with open(r'C:\Users\sfrie\Python\AdventofCode\Day4a.txt') as file:    
       
     list_1 = file.read()
     string_1 = list_1.split('\n\n')

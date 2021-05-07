@@ -1,5 +1,5 @@
 def data():
-    data = open('Day8a.txt', 'r').readlines()
+    data = open(r'C:\Users\sfrie\Python\AdventofCode\Day8a.txt').readlines()
     #print(data)
     data2 = [x.strip() for x in data]
     list_data_return = [x.split() for x in data2]

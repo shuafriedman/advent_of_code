@@ -1,6 +1,6 @@
 #Create and read file
 IDs= []
-with open(r'C:\Users\sfrie\Documents\Python Scripts\AdventofCode\Day5.txt') as file:
+with open(r'C:\Users\sfrie\Python\AdventofCode\Day5.txt') as file:
     x = file.readlines()
     
 # Loop through each line, removing '/n'        

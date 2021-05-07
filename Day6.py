@@ -1,5 +1,5 @@
 #Read file, split by line breaks into lists
-txt_file = r'C:\Users\sfrie\Documents\Python Scripts\AdventofCode\Day6.txt'
+txt_file = r'C:\Users\sfrie\Python\AdventofCode\Day6.txt'
 
 def data_6partA():
     with open(txt_file) as file:

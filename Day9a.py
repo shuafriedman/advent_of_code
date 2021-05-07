@@ -1,5 +1,5 @@
 def file():
-    with open(r'Day9.txt') as file:
+    with open(r'C:\Users\sfrie\Python\AdventofCode\Day9a.txt') as file:
         file = file.readlines()
         file = [int(x.strip('n')) for x in file]
         return file

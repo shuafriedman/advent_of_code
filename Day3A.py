@@ -1,6 +1,6 @@
 trees = 0
 position = 3
-with open ('Day3.txt') as file:
+with open (r"C:\Users\sfrie\Python\AdventofCode\Day3.txt") as file:
     next(file)
     for line in file:
         if line[position] == '#':
@@ -9,5 +9,4 @@ with open ('Day3.txt') as file:
         print(position)
         print(line[position])
         position = (position + 3) % 31
-print(trees)
-            
+print(trees)            
