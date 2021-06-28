@@ -2,7 +2,7 @@ import re
 import pprint
 
 ###Make dictionary of the data
-with open(r'C:\Users\sfrie\Python\AdventofCode\Day7.txt') as file:
+with open('input7.txt') as file:
     list_ = file.readlines()
     list_ = [y.strip() for y in list_]
     new_line = [re.split(r"contain|\,", line) for line in list_]

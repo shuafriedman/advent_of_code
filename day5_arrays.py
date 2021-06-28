@@ -1,6 +1,7 @@
 #Create and read file
+import numpy as np
 IDs= []
-with open(r'C:\Users\sfrie\Python\AdventofCode\Day5.txt') as file:
+with open('input5.txt') as file:
     x = file.readlines()
     
 # Loop through each line, removing '/n'        
@@ -8,12 +9,9 @@ with open(r'C:\Users\sfrie\Python\AdventofCode\Day5.txt') as file:
         string.strip('\n')
         
 #Within the loop, set variables and create numbered list.
-        column = []
-        numbers = []
-        for y in range(0, 128):
-            numbers.append(y)
-        for z in range(0,8):
-            column.append(z)
+        numbers = list(np.arange(0,128))
+        column = list(np.arange(0,8))
+
         
         #Check each letter, dvide the list each time. Then, check last letters.  
         for letter in string:
