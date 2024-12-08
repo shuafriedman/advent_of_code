@@ -14,6 +14,7 @@ def check_for_consistency(val, next_val, direction):
         if direction == 'decrease':
             return False
         return 'increase'
+    
 def check_row_for_rules(a):
     direction = None
     for i in range(len(a)-1):
@@ -47,4 +48,15 @@ for row in f:
 print(count)
                 
         
-         
+# Optimized version
+# count = 0
+# for row in f:
+#     row = row.split()
+#     if check_row_for_rules(row):
+#         count +=1
+#     else:
+#         if any( #any is efficient, and evaluates at the first True
+#             check_row_for_rules(row[:i] + row[i+1:]) for i in range(len(row))
+#         ):
+#             count+=1
+# print(count)
