@@ -58,18 +58,37 @@ def look_and_do_mul(
             current_mul.append(char)
     
     return mul_started, in_mul, count, current_mul, inside_mul
-    
+
+def contains_do(line):
+    line = ''.join(line)
+    return True if line.__contains__('do()') else False
+def contains_dont(line):
+    line = ''.join(line)
+    return False if line.__contains__('don\'t()') else True
+
 mul_started = False
 in_mul = False
 count = 0
+do = True
+do_list = []
 for line in f:
     current_mul = []
     inside_mul = []
     for char in line:
-        mul_started, in_mul, count, current_mul, inside_mul = look_and_do_mul(
-            mul_started, in_mul, count, current_mul, inside_mul
-        )               
-           
+        do_list.append(char)
+        if do:
+            do = contains_dont(do_list)
+            if do == False:
+                do_list = []
+            mul_started, in_mul, count, current_mul, inside_mul = look_and_do_mul(
+                mul_started, in_mul, count, current_mul, inside_mul
+            )
+
+        elif not do:
+            do = contains_do(do_list)
+            if do ==True:
+                do_list = []
+                        
 print(count)     
         
             
