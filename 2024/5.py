@@ -13,6 +13,7 @@ invalid_corrected_count = 0
 for update in updates:
     valid = True
     fixed_update = update.copy()
+    #5a
     for i in range(len(update)):
         rules = rule_dict.get(update[i])
         if valid == True:
@@ -21,7 +22,7 @@ for update in updates:
                     if rule in update[:i]:
                         valid = False
                         break 
-                         
+    #5b                     
     if valid == True:
         count+= int(update[len(update) // 2]) 
     else:
